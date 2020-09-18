@@ -59,10 +59,12 @@ const App = () => {
 
   const formSubmit = () => {
     const newOrder = {
-      first_name: formValues.first_name.trim(),
-      last_name: formValues.last_name.trim(),
-      email: formValues.email.trim(),
-      tos: formValues.tos,
+      name: formValues.name.trim(),
+      phone: formValues.phone.trim(),
+      toppings: ["pepperoni", "sausage", "ham", "pineapple"].filter(
+        (top) => formValues[top]
+      ),
+      special: formValues.special.trim(),
     };
   };
 
@@ -70,11 +72,11 @@ const App = () => {
   //   getOrders();
   // }, []);
 
-  // useEffect(() => {
-  //   schema.isValid(formValues).then((valid) => {
-  //     setDisabled(!valid);
-  //   });
-  // }, [formValues]);
+  useEffect(() => {
+    schema.isValid(formValues).then((valid) => {
+      setDisabled(!valid);
+    });
+  }, [formValues]);
 
   return (
     <div className="container">

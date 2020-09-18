@@ -15,7 +15,7 @@ export default function OrderForm(props) {
   };
 
   return (
-    <form classname="formContainer" onSubmit={onSubmit}>
+    <form className="formContainer" onSubmit={onSubmit}>
       <div className="formInputs">
         <label>
           {""}
@@ -34,8 +34,9 @@ export default function OrderForm(props) {
           <input
             value={values.phone}
             onChange={onChange}
-            name="name"
-            type="tel"
+            name="phone"
+            type="number"
+            pattern="[0-9]"
           />
         </label>
         <h2>Select a Size</h2>
@@ -58,7 +59,7 @@ export default function OrderForm(props) {
 
         <label>
           {""}
-          toppings
+          pepperoni
           <input
             type="checkbox"
             name="pepperoni"
@@ -69,7 +70,7 @@ export default function OrderForm(props) {
 
         <label>
           {""}
-          toppings
+          sausage
           <input
             type="checkbox"
             name="sausage"
@@ -80,7 +81,7 @@ export default function OrderForm(props) {
 
         <label>
           {""}
-          toppings
+          ham
           <input
             type="checkbox"
             name="ham"
@@ -91,7 +92,7 @@ export default function OrderForm(props) {
 
         <label>
           {""}
-          toppings
+          pineapple
           <input
             type="checkbox"
             name="pineapple"
@@ -125,7 +126,6 @@ export default function OrderForm(props) {
           <div>{errors.phone}</div>
           <div>{errors.size}</div>
           <div>{errors.toppings}</div>
-          <div>{errors.special}</div>
         </div>
       </div>
     </form>

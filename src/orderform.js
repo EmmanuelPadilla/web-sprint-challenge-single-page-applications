@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, useRouteMatch } from "react-router-dom";
 
 export default function OrderForm(props) {
   const { values, submit, change, disabled, errors } = props;
@@ -109,18 +110,20 @@ export default function OrderForm(props) {
           <input
             value={values.special}
             onChange={onChange}
-            name="Special"
+            name="special"
             type="text"
           />
         </label>
       </div>
 
       <div className="formsubmit">
-        <h2>Order</h2>
-        <button id="button" dissabled={disabled}>
-          {" "}
-          ORDER!
-        </button>
+        <Link to="/confirmation">
+          <button id="button" disabled={disabled}>
+            {" "}
+            ORDER !
+          </button>
+        </Link>
+
         <div className="errors">
           <div>{errors.name}</div>
           <div>{errors.phone}</div>

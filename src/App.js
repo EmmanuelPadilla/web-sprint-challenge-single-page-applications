@@ -3,6 +3,9 @@ import OrderForm from "./orderform";
 import "./App.css";
 import schema from "./schema";
 import * as yup from "yup";
+import Confirmation from "./confirmation";
+import { Route, Switch, Link } from "react-router-dom";
+import axios from "axios";
 
 const initialFormValues = {
   name: "",
@@ -29,6 +32,21 @@ const App = () => {
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(initialDisabled);
+
+  const postNewOrder = (newOrder) => {
+    axios
+      .post("https://reqres.in/api/orders", newOrder)
+      .then((res) => {
+        console.log(res.data);
+        console.log(orders);
+        setOrders([...orders, res.data]);
+        setFormValues(initialFormValues);
+      })
+      .catch((err) => {
+        console.log(err, "couldnt post it");
+      })
+      .finally(() => {});
+  };
 
   const validate = (name, value) => {
     yup
@@ -62,10 +80,11 @@ const App = () => {
       name: formValues.name.trim(),
       phone: formValues.phone.trim(),
       toppings: ["pepperoni", "sausage", "ham", "pineapple"].filter(
-        (top) => formValues[top]
+        (topns) => formValues[topns]
       ),
       special: formValues.special.trim(),
     };
+    postNewOrder(newOrder);
   };
 
   // useEffect(() => {
@@ -83,13 +102,28 @@ const App = () => {
       <header>
         <h1>Welcome to GoodyGoody Pizza</h1>
       </header>
-      <OrderForm
-        values={formValues}
-        change={inputChange}
-        submit={formSubmit}
-        disabled={disabled}
-        errors={formErrors}
-      />
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/orderform">Order NOW</Link>{" "}
+      </nav>
+      <h2>Order delicious pizza NOW!</h2>
+      <div className="landing">
+        <h3>Come and get it!!</h3>
+      </div>
+      <Switch>
+        <Route path="/orderform">
+          <OrderForm
+            values={formValues}
+            change={inputChange}
+            submit={formSubmit}
+            disabled={disabled}
+            errors={formErrors}
+          />
+        </Route>
+        <Route path="/confirmation">
+          <Confirmation values={formValues} />
+        </Route>
+      </Switch>
     </div>
   );
 };

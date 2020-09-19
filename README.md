@@ -31,8 +31,14 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question.
 
 1. In 1-2 sentences, explain what React's `useRouteMatch` hook is used for.
+
+**\***The useHistory hook gives you access to the history instance that you may use to navigate using your browser keys.
+
 1. How would you explain form validation to someone who has never programmed before?
+   **\***Its a program that checks each of the user imputs to make sure what the user is inputting is the value you want, such as number or email, etc.
+
 1. In 1-2 sentences, define end to end testing.
+   **\***E2E is testing that involves an applications workflow from beggining to end, just to make sure everything is working as expected.
 
 ## Instructions
 

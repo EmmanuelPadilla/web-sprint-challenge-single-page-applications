@@ -124,6 +124,9 @@ const App = () => {
           <Confirmation values={formValues} />
         </Route>
       </Switch>
+
+      {/* {orders.map((order) => {
+    return <Order key={users.id} details={order} /> */}
     </div>
   );
 };

@@ -44,7 +44,7 @@ export default function OrderForm(props) {
         <label>
           {""}
           Size
-          <select name="size" value={values.size} onChange={onChange}>
+          <select id="size" name="size" value={values.size} onChange={onChange}>
             <option value=""> ---Select a Size---</option>
             <option value="personal"> 6" Personal</option>
             <option value="small"> 12" Small</option>
@@ -62,6 +62,7 @@ export default function OrderForm(props) {
           {""}
           pepperoni
           <input
+            id="pep"
             type="checkbox"
             name="pepperoni"
             checked={values.pepperoni}
@@ -73,6 +74,7 @@ export default function OrderForm(props) {
           {""}
           sausage
           <input
+            id="sausage"
             type="checkbox"
             name="sausage"
             checked={values.sausage}
@@ -84,6 +86,7 @@ export default function OrderForm(props) {
           {""}
           ham
           <input
+            id="ham"
             type="checkbox"
             name="ham"
             checked={values.ham}
@@ -95,6 +98,7 @@ export default function OrderForm(props) {
           {""}
           pineapple
           <input
+            id="pineapple"
             type="checkbox"
             name="pineapple"
             checked={values.pineapple}
